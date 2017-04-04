@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CVP Servers</title>
+    <script src="resources/js/lib/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="resources/js/lib/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/js/scripts.js" type="text/javascript"></script>
+    <script src="resources/js/lib/multiselect.js" type="text/javascript"></script>
+    <script src="resources/js/lib/jquery.repeater.js" type="text/javascript"></script>
+    <script src="resources/js/lib/jquery.easyPaginate.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <!--SELECT SERVER-->
+    <div class="row">
+        <div class="col-xs-12 title">
+            <h3>CVP Server</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5">
+            <select name="from[]" id="search_servers" class="form-control" size="8" multiple="multiple"
+                    data-right="#multiselect_to_1"
+                    data-right-all="#right_All_1" data-right-selected="#right_Selected_1"
+                    data-left-all="#left_All_1"
+                    data-left-selected="#left_Selected_1">
+            </select>
+        </div>
+
+        <div class="col-xs-1 button-block">
+            <button type="button" id="addServer" class="btn btn-block addServer" data-toggle="modal"
+                    data-target="#addServerModal"><i
+                    class="glyphicon glyphicon-plus"></i></button>
+            <button type="button" id="search_servers_rightAll" class="btn btn-block"><i
+                    class="glyphicon glyphicon-forward"></i></button>
+            <button type="button" id="search_servers_rightSelected" class="btn btn-block"><i
+                    class="glyphicon glyphicon-chevron-right"></i></button>
+            <button type="button" id="search_servers_leftSelected" class="btn btn-block"><i
+                    class="glyphicon glyphicon-chevron-left"></i></button>
+            <button type="button" id="search_servers_leftAll" class="btn btn-block"><i
+                    class="glyphicon glyphicon-backward"></i></button>
+        </div>
+        <div class="col-xs-5">
+            <div id="search_servers_selected">
+                <select name="to[]" id="search_servers_to" class="form-control" size="8" multiple="multiple"></select>
+            </div>
+        </div>
+        <div class="col-xs-1 move-button">
+            <button type="button" id="search_servers_move_up" class="btn btn-block"><i
+                    class="glyphicon glyphicon-arrow-up"></i></button>
+            <button type="button" id="search_servers_move_down" class="btn btn-block col-sm-6"><i
+                    class="glyphicon glyphicon-arrow-down"></i></button>
+        </div>
+    </div>
+    <!--END SELECT SERVER-->
+
+    <!--SELECT APPLICATIONS-->
+    <div class="row">
+        <div class="col-xs-12 title">
+            <h3>Applications</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5">
+            <select name="from[]" id="search_apps" class="form-control" size="8" multiple="multiple"
+                    data-right="#multiselect_to_1"
+                    data-right-all="#right_All_1" data-right-selected="#right_Selected_1"
+                    data-left-all="#left_All_1"
+                    data-left-selected="#left_Selected_1">
+            </select>
+        </div>
+        <div class="col-xs-1 button-block button-block-apps">
+            <button type="button" id="search_apps_rightAll" class="btn btn-block"><i
+                    class="glyphicon glyphicon-forward"></i></button>
+            <button type="button" id="search_apps_rightSelected" class="btn btn-block"><i
+                    class="glyphicon glyphicon-chevron-right"></i></button>
+            <button type="button" id="search_apps_leftSelected" class="btn btn-block"><i
+                    class="glyphicon glyphicon-chevron-left"></i></button>
+            <button type="button" id="search_apps_leftAll" class="btn btn-block"><i
+                    class="glyphicon glyphicon-backward"></i></button>
+        </div>
+        <div class="col-xs-5">
+            <div id="search_apps_selected">
+                <select name="to[]" id="search_apps_to" class="form-control" size="8" multiple="multiple">
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-1 move-button">
+            <button type="button" id="search_apps_move_up" class="btn btn-block"><i
+                    class="glyphicon glyphicon-arrow-up"></i></button>
+            <button type="button" id="search_apps_move_down" class="btn btn-block col-sm-6"><i
+                    class="glyphicon glyphicon-arrow-down"></i></button>
+        </div>
+    </div>
+    <!--END SELECT APPLICATIONS-->
+
+    <!--SEARCH CRITERIA-->
+    <div>
+        <div class="row">
+            <div class="col-xs-12 title module-separator">
+                Search Criteria
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 module-separator-sm">
+                Argument Type
+            </div>
+            <div class="col-xs-2 module-separator-sm">
+                Value
+            </div>
+        </div>
+        <div id="searchArea">
+            <div class="row">
+                <div class="searchCriteriaBlock">
+                    <div class="col-xs-4">
+                        <select class="form-control searchCriteriaSelect">
+                        </select>
+                        <br>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <input class="form-control"
+                               onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <select class="form-control">
+                            <option>OR</option>
+                            <option>AND</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-1">
+                    <div>
+                        <button class="btn btn-block btn-sm glyphicon glyphicon-plus addSearchSection"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4 module-separator-sm" style="text-align: end;">
+            <p style="font-size: x-large;">Date</p>
+        </div>
+        <div class="col-xs-4 date module-separator-sm">
+            <input id="date" type="date" class="form-control"/>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-xs-2 module-separator-sm">
+            <button type="submit" class="btn btn-md btn-info" value="Search" id="searchButton">
+                <strong>Search</strong>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6 module-separator-sm" id="errorBlock">
+        </div>
+    </div>
+    <!--END SEARCH CRITERIA-->
+
+    <!--OUTPUT-->
+    <div class="row module-separator title">
+        <div class="col-xs-6 ">
+            Output
+        </div>
+    </div>
+    <div>
+        <div id="easyPaginate" class="row">
+        </div>
+    </div>
+    <div class="row">
+        <div class="totalRecords"></div>
+    </div>
+    <!-- END OUTPUT -->
+
+    <!--MODAL-->
+    <div class="modal fade" id="addServerModal" tabindex="-1" role="dialog" aria-labelledby="addServerModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addServerModalLabel">Server info</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert hidden" role="alert">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-6">
+                            <label for="idAddress" class="control-label">IP address</label>
+                            <input type="text" class="form-control"
+                                   id="idAddress">
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="displayName" class="control-label">Display name</label>
+                            <input class="form-control" id="displayName">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn addServerModal">Add server</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END MODAL-->
+</div>
+</body>
+</html>

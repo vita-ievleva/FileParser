@@ -1,0 +1,74 @@
+#body {
+    height: 1200px;
+}
+
+.title {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.module-separator {
+    margin-top: 100px;
+}
+
+.module-separator-sm {
+    margin-top: 20px;
+}
+
+.separator-search {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /*    border-bottom: 1px solid #eeeeee;*/
+}
+
+.output {
+    border: 1px solid #EEEEEE;
+    padding: 10px;
+    max-height: 300px;
+    min-height: 200px;
+    overflow: scroll;
+    white-space: pre-wrap;
+}
+
+.button-block-apps {
+    padding-top: 2.6%;
+}
+
+.move-button {
+    padding-top: 5%;
+}
+
+.error {
+    border: 1px solid #c00;
+}
+
+li {
+    list-style-type: none;
+}
+
+.easyPaginateNav a {
+    padding: 5px;
+}
+
+.easyPaginateNav {
+    padding: 1%;
+}
+
+.easyPaginateNav a.current {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.totalRecords {
+    text-align: right;
+    font-size: x-large;
+    padding-bottom: 20%;
+}
+
+.addServerModal {
+    background-color: bisque;
+}
+
+.addServer {
+    background-color: bisque;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cvp-servers>
+    <applications>
+        <name>APP2</name>
+        <name>APP1</name>
+        <name>APP3</name>
+        <name>APP4</name>
+        <name>APP5</name>
+        <name>APP6</name>
+        <name>APP7</name>
+        <name>APP8</name>
+        <name>APP9</name>
+    </applications>
+    <servers>
+        <server>
+            <ipAddress>127.0.0.1</ipAddress>
+            <name>QWE</name>
+        </server>
+        <server>
+            <ipAddress>127.0.0.2</ipAddress>
+            <name>RTY</name>
+        </server>
+    </servers>
+</cvp-servers>
